@@ -10,6 +10,11 @@ public class Max {
      * Вычисляет максимум.
      */
     public int max(int left, int right) {
-        return left > right ? left : right;
+        if (left == right) {
+            return 0;
+        } else {
+            return left > right ? left : right;
+        }
+
     }
 }

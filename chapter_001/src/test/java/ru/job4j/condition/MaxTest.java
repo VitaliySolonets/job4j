@@ -12,4 +12,19 @@ public class MaxTest {
         int result = max.max(1, 2);
         assertThat(result, is(2));
     }
+
+    @Test
+    public void whenMax2to1Then1() {
+        Max max = new Max();
+        int result = max.max(2, 1);
+        assertThat(result, is(2));
+    }
+
+    @Test
+    public void whenNumbersSame() {
+        Max max = new Max();
+        int result = max.max(2, 2);
+        assertThat(result, is(0));
+
+    }
 }
