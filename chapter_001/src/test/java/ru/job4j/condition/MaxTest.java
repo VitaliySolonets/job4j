@@ -24,7 +24,7 @@ public class MaxTest {
     public void whenNumbersSame() {
         Max max = new Max();
         int result = max.max(2, 2);
-        assertThat(result, is(0));
+        assertThat(result, is(2));
 
     }
 }
