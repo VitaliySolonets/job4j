@@ -1,11 +1,13 @@
 package ru.job4j.array;
+
+import java.util.Arrays;
+
 /**
  * @author Vitaly Solonets (solonets.80@mail.ru)
  * @version $1.0$
  * @since 08.08.2019
  */
 
-import java.util.Arrays;
 
 public class MergeArray {
     /**
@@ -25,10 +27,10 @@ public class MergeArray {
             if (i > left.length - 1) { //проверяем выход за пределы left.
                 merge[k] = right[j];
                 j++;
-            } else if (j > right.length - 1) {//проверяем выход за пределы right.
+            } else if (j > right.length - 1) { //проверяем выход за пределы right.
                 merge[k] = left[i];
                 i++;
-            } else if (left[i] < right[j]) {// перемещение в массив наименьшего элементаю
+            } else if (left[i] < right[j]) { // перемещение в массив наименьшего элементаю
                 merge[k] = left[i];
                 i++;
             } else {
@@ -39,10 +41,10 @@ public class MergeArray {
         return merge;
     }
 
-/*
-    public static void main(String[] args) {
+
+    /*public static void main(String[] args) {
         MergeArray array = new MergeArray();
-        int[] result = array.merge(new int[]{2, 3, 4, 6, 7, 8}, new int[]{1, 5, 9});
+        int[] result = array.merge(new int[]{2, 3, 4, 6, 7, 8}, new int[]{1, 5, 9,21,21,44,52,62,68,79,79});
         int[] ex = {1, 2, 3, 4, 5, 6, 7, 8, 9};
         System.out.print(Arrays.toString(result));
     }*/
