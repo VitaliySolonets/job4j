@@ -41,7 +41,7 @@ public class PointTest {
         first.info();
         Point second = new Point(2, 2);
         second.info();
-        Point third = new Point(3, 3,3);
+        Point third = new Point(3, 3, 3);
         third.info3D();
     }
 }
