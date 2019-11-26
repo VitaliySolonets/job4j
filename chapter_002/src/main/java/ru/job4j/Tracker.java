@@ -29,14 +29,10 @@ public class Tracker {
      * @return Уникальный ключ.
      */
     private String generateId() {
-        /*
-         * Чтобы получить текущее время в Java есть удобный метод System.currentTimeMillis()
-         * чтобы получить случайное число используем объект класса Random. Метод extLong().
-         *Чтобы преобразовать что угодно в String можно использовать метод класса String.valueOf()
-         */
         Random rm = new Random();
         return String.valueOf(rm.nextLong() + System.currentTimeMillis());
     }
+
 
     /**
      * Метод заменяет ячейку в массиве.
@@ -44,14 +40,15 @@ public class Tracker {
      * @return boolean result удалось ли провести операцию.
      */
     public boolean replace(String id, Item item) {
-        boolean result = false;                        //вводим переменную
-        for (int i = 0; i < this.items.length; i++) {
-            if (this.items[i] != null && this.items[i].getId().equals(id)) {    //находим id какого элемента совпадает с входящим id
-                this.items[i] = item;                  //заменяем заявку
+        boolean result = false;
+        for (int i = 0; i < this.position; i++) {
+            if (this.items[i].getId().equals(id)) {
+                this.items[i] = item;
+                item.setId(id);
                 result = true;
             }
         }
-        return result;                                 // возвращаем результат
+        return result;
     }
 
     /**
@@ -61,9 +58,9 @@ public class Tracker {
      */
     public boolean delete(String id) {
         boolean result = false;
-        for (int i = 0; i < this.items.length; i++) {
+        for (int i = 0; i < position; i++) {
             if (this.items[i].getId().equals(id)) {
-                System.arraycopy(this.items, i + 1, this.items, i, this.items.length - i - 1);
+                System.arraycopy(this.items, i + 1, this.items, i, this.position - i - 1);
                 result = true;
                 break;
             }
@@ -75,10 +72,7 @@ public class Tracker {
      * Метод возвращает копию массива  this.items без null элементов.
      */
     public Item[] findAll() {
-        List<Item> itemcoll = new ArrayList<>(); //создаем списочный массив
-        Collections.addAll(itemcoll, this.items); //перобразуем в него наш простой массив заявок
-        itemcoll.removeAll(Collections.singleton(null)); //удаляем элементы null
-        return itemcoll.toArray(new Item[itemcoll.size()]); // возвращаем из метода проебразуя в простой массив с заданием размера без null
+        return Arrays.copyOf(this.items, position);
     }
 
     /**
@@ -88,8 +82,8 @@ public class Tracker {
 
     public Item[] findByName(String key) {
         List<Item> list = new ArrayList<>();
-        for (int index = 0; index < this.items.length; index++) {
-            if (this.items[index] != null && this.items[index].getName().equals(key)) {
+        for (int index = 0; index < this.position; index++) {
+            if (this.items[index].getName().equals(key)) {
                 list.add(this.items[index]);
             }
         }
@@ -102,7 +96,7 @@ public class Tracker {
     public Item findById(String id) {
         Item result = null;
         for (Item item : items) {
-            if (item != null && item.getId().equals(id)) {
+            if (item.getId().equals(id)) {
                 result = item;
                 break;
             }

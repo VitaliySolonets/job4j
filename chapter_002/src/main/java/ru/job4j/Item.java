@@ -10,10 +10,10 @@ package ru.job4j;
  * Класс Item описывает бизнес модель заявки.
  */
 public class Item {
-    private String id; //уникальный ключ.
-    private String name; //имя.
+    private String id;
+    private String name;
 
-    //конструктор класса.
+
     public Item(String name) {
         this.name = name;
     }
