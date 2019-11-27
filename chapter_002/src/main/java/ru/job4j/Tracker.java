@@ -81,13 +81,13 @@ public class Tracker {
      */
 
     public Item[] findByName(String key) {
-        List<Item> list = new ArrayList<>();
-        for (int index = 0; index < this.position; index++) {
+        Item[] result = new Item[position];
+        for (int index = 0, j = 0; index < this.position; index++) {
             if (this.items[index].getName().equals(key)) {
-                list.add(this.items[index]);
+                result[j++] = (this.items[index]);
             }
         }
-        return list.toArray(new Item[list.size()]);
+        return result;
     }
 
     /**
@@ -95,9 +95,9 @@ public class Tracker {
      */
     public Item findById(String id) {
         Item result = null;
-        for (Item item : items) {
-            if (item.getId().equals(id)) {
-                result = item;
+        for (int index = 0, j = 0; index < this.position; index++) {
+            if (this.items[index].getId().equals(id)) {
+                result = this.items[index];
                 break;
             }
         }
