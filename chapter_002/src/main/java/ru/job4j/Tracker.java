@@ -4,17 +4,17 @@ import java.util.*;
 
 public class Tracker {
     /**
-     * Массив для хранения заявок
+     * Массив для хранения заявок.
      */
     public final Item[] items = new Item[100];
 
     /**
-     * Указатель ячейки для новой заявки
+     * Указатель ячейки для новой заявки.
      */
     private int position = 0;
 
     /**
-     * Метод реализующий добавление новой заявки в хранилище
+     * Метод реализующий добавление новой заявки в хранилище.
      */
     public Item add(Item item) {
         item.setId(this.generateId());
@@ -37,7 +37,7 @@ public class Tracker {
     /**
      * Метод заменяет ячейку в массиве.
      *
-     * @return boolean result удалось ли провести операцию.
+     * @return boolean result удалось ли провести операцию
      */
     public boolean replace(String id, Item item) {
         boolean result = false;
@@ -54,7 +54,7 @@ public class Tracker {
     /**
      * Метод удаляет ячейку в массиве по id. Смещая все значения справа от удаляемого элемента.
      *
-     * @return true или false, удалось ли провести операцию.
+     * @return true или false, удалось ли провести операцию
      */
     public boolean delete(String id) {
         boolean result = false;
@@ -69,7 +69,7 @@ public class Tracker {
     }
 
     /**
-     * Метод возвращает копию массива  this.items без null элементов.
+     * Метод возвращает копию массива  this.items без null элементов
      */
     public Item[] findAll() {
         return Arrays.copyOf(this.items, position);
@@ -77,7 +77,7 @@ public class Tracker {
 
     /**
      * Проверяет все элементы в цикле.Сравнивая name с аргументом метода String key.
-     * Элементы у которых name совпадает копирует в результирующий массив и возвращает его.
+     * Элементы у которых name совпадает копирует в результирующий массив и возвращает его
      */
 
     public Item[] findByName(String key) {
@@ -91,7 +91,7 @@ public class Tracker {
     }
 
     /**
-     * Метод находит Item с нужный id.
+     * Метод находит Item с нужный id
      */
     public Item findById(String id) {
         Item result = null;
