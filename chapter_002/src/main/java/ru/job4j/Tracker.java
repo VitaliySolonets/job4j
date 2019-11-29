@@ -33,6 +33,22 @@ public class Tracker {
         return String.valueOf(rm.nextLong() + System.currentTimeMillis());
     }
 
+    /**
+     * Метод возвращающий индекс элемента по входящему Id.
+     *
+     * @return index элемента.
+     */
+    private int getIndexById(String id) {
+        int index = -1;
+        for (int i = 0; i < this.position; i++) {
+            if (this.items[i].getId().equals(id)) {
+                index = i;
+                break;
+            }
+        }
+        return index;
+    }
+
 
     /**
      * Метод заменяет ячейку в массиве.
@@ -82,12 +98,13 @@ public class Tracker {
 
     public Item[] findByName(String key) {
         Item[] result = new Item[position];
-        for (int index = 0, j = 0; index < this.position; index++) {
+        int count = 0;
+        for (int index = 0; index < this.position; index++) {
             if (this.items[index].getName().equals(key)) {
-                result[j++] = (this.items[index]);
+                result[count++] = (this.items[index]);
             }
         }
-        return result;
+        return Arrays.copyOf(result, count);
     }
 
     /**

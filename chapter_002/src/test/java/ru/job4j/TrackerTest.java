@@ -64,7 +64,7 @@ public class TrackerTest {
         tracker.add(item2);
         String key = "test";
         Item[] res = tracker.findByName(key);
-        Item[] expect = new Item[3];
+        Item[] expect = new Item[2];
         expect[0] = item;
         expect[1] = item2;
         assertThat(res, is(expect));
