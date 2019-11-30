@@ -62,6 +62,7 @@ public class Tracker {
                 this.items[i] = item;
                 item.setId(id);
                 result = true;
+                break;
             }
         }
         return result;
