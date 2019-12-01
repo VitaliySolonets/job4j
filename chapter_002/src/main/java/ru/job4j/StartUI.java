@@ -23,18 +23,24 @@ public class StartUI {
                 System.out.println("Please, enter the id:");
                 String id = scanner.nextLine();
                 boolean edit = tracker.replace(id, tracker.findById(id));
-                if (edit) System.out.println("Thanks. Item edited.");
+                if (edit) {
+                    System.out.println("Thanks. Item edited.");
+                }
             } else if (select == 3) {
                 System.out.println("Please, enter the id.");
                 String id = scanner.nextLine();
                 boolean delete = tracker.delete(id);
                 if (delete) {
                     System.out.println("Operation is + " + delete + " Thanks. Item deleted.");
-                } else System.out.println("The operation failed.");
+                } else {
+                    System.out.println("The operation failed.");
+                }
             } else if (select == 4) {
                 System.out.println("Please, enter the id.");
                 String id = scanner.nextLine();
-                if (tracker.findById(id) != null) System.out.println(tracker.findById(id).getName());
+                if (tracker.findById(id) != null) {
+                    System.out.println(tracker.findById(id).getName());
+                }
             } else if (select == 5) {
                 System.out.println("Please, enter name:");
                 String name = scanner.nextLine();
