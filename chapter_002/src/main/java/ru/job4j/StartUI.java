@@ -38,9 +38,9 @@ public class StartUI {
             } else if (select == 4) {
                 System.out.println("Please, enter the id.");
                 String id = scanner.nextLine();
-                if (tracker.findById(id) != null) {
-                    System.out.println(tracker.findById(id).getName());
-                }
+                Item item = tracker.findById(id);
+                System.out.println(item != null ? item.getName() : "Invalid id");
+
             } else if (select == 5) {
                 System.out.println("Please, enter name:");
                 String name = scanner.nextLine();
