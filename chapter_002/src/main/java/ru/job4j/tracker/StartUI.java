@@ -7,47 +7,64 @@ import java.util.Arrays;
  */
 
 public class StartUI {
+    public static void createItem(Input input, Tracker tracker) {
+        System.out.println("===Create a new Item");
+        String name = input.askStr("Enter name:");
+        Item item = new Item(name);
+        tracker.add(item);
+        System.out.println("Item added.");
+    }
+
+    public static void showAllItems(Input input, Tracker tracker) {
+        System.out.println(Arrays.toString(tracker.findAll()));
+    }
+
+    public static void editItem(Input input, Tracker tracker) {
+        String id = input.askStr("Please enter the id.");
+        boolean edit = tracker.replace(id, tracker.findById(id));
+        if (edit) {
+            System.out.println("Thanks. Item edited.");
+        }
+    }
+
+    public static void deleteItem(Input input, Tracker tracker) {
+        String id = input.askStr("Please,enter the id.");
+        boolean delete = tracker.delete(id);
+        if (delete) {
+            System.out.println("Operation is  " + delete + " Thanks. Item deleted.");
+        } else {
+            System.out.println("The operation failed.");
+        }
+    }
+
+    public static void findItemById(Input input, Tracker tracker) {
+        String id = input.askStr("Please,enter the id.");
+        Item item = tracker.findById(id);
+        System.out.println(item != null ? item.getName() : "Invalid id.");
+    }
+
+    public static void findItemsByName(Input input, Tracker tracker) {
+        String name = input.askStr("Please,enter the name:");
+        System.out.println(Arrays.toString(tracker.findByName(name)));
+    }
+
     public void init(Input input, Tracker tracker) {
         boolean run = true;
         while (run) {
             this.showMenu();
-            // System.out.println("Select: ");
             int select = Integer.valueOf(input.askStr("Select: "));
             if (select == 0) {
-                System.out.println("=== Create a new Item ===");
-                // System.out.println("Enter name:");
-                String name = input.askStr("Enter name:");
-                Item item = new Item(name);
-                tracker.add(item);
-                System.out.println("Item added.");
+                StartUI.createItem(input, tracker);
             } else if (select == 1) {
-                System.out.println(Arrays.toString(tracker.findAll()));
+                StartUI.showAllItems(input, tracker);
             } else if (select == 2) {
-                //System.out.println("Please, enter the id:");
-                String id = input.askStr("Please, enter the id:");
-                boolean edit = tracker.replace(id, tracker.findById(id));
-                if (edit) {
-                    System.out.println("Thanks. Item edited.");
-                }
+                StartUI.editItem(input, tracker);
             } else if (select == 3) {
-                // System.out.println("Please, enter the id.");
-                String id = input.askStr("Please, enter the id.");
-                boolean delete = tracker.delete(id);
-                if (delete) {
-                    System.out.println("Operation is  " + delete + " Thanks. Item deleted.");
-                } else {
-                    System.out.println("The operation failed.");
-                }
+                StartUI.deleteItem(input, tracker);
             } else if (select == 4) {
-                // System.out.println("Please, enter the id.");
-                String id = input.askStr("Please, enter the id.");
-                Item item = tracker.findById(id);
-                System.out.println(item != null ? item.getName() : "Invalid id");
-
+                StartUI.findItemById(input, tracker);
             } else if (select == 5) {
-                //  System.out.println("Please, enter name:");
-                String name = input.askStr("Please, enter name:");
-                System.out.println(Arrays.toString(tracker.findByName(name)));
+                StartUI.findItemsByName(input, tracker);
             } else if (select == 6) {
                 run = false;
             }
