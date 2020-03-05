@@ -1,6 +1,5 @@
 package ru.job4j.tracker;
 
-import java.util.Arrays;
 
 /**
  * Консольное приложение для работы с классом ru.job4j.tracker.Tracker.
@@ -8,15 +7,18 @@ import java.util.Arrays;
 
 public class StartUI {
     public static void createItem(Input input, Tracker tracker) {
-        System.out.println("===Create a new Item");
+        System.out.println("===Create a new Item===");
         String name = input.askStr("Enter name:");
         Item item = new Item(name);
         tracker.add(item);
         System.out.println("Item added.");
     }
 
-    public static void showAllItems(Input input, Tracker tracker) {
-        System.out.println(Arrays.toString(tracker.findAll()));
+    public static void showAllItems(Tracker tracker) {
+        Item[] items = tracker.findAll();
+        for (int i = 0; i < items.length; i++) {
+            System.out.println(items[i]);
+        }
     }
 
     public static void editItem(Input input, Tracker tracker) {
@@ -24,6 +26,8 @@ public class StartUI {
         boolean edit = tracker.replace(id, tracker.findById(id));
         if (edit) {
             System.out.println("Thanks. Item edited.");
+        } else {
+            System.out.println("The operation failed.");
         }
     }
 
@@ -45,7 +49,11 @@ public class StartUI {
 
     public static void findItemsByName(Input input, Tracker tracker) {
         String name = input.askStr("Please,enter the name:");
-        System.out.println(Arrays.toString(tracker.findByName(name)));
+        //System.out.println(Arrays.toString(tracker.findByName(name)));
+        Item[] items = tracker.findByName(name);
+        for (Item item : items) {
+            System.out.println(item);
+        }
     }
 
     public void init(Input input, Tracker tracker) {
@@ -56,7 +64,7 @@ public class StartUI {
             if (select == 0) {
                 StartUI.createItem(input, tracker);
             } else if (select == 1) {
-                StartUI.showAllItems(input, tracker);
+                StartUI.showAllItems(tracker);
             } else if (select == 2) {
                 StartUI.editItem(input, tracker);
             } else if (select == 3) {

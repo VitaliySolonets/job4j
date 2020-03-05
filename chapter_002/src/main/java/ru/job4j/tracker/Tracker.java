@@ -89,7 +89,14 @@ public class Tracker {
      * Метод возвращает копию массива  this.items без null элементов
      */
     public Item[] findAll() {
-        return Arrays.copyOf(this.items, position);
+        Item[] result = new Item[position];
+        int count = 0;
+        for (int index = 0; index < this.position; index++) {
+            if (this.items[index] != null) {
+                result[count++] = this.items[index];
+            }
+        }
+        return Arrays.copyOf(result, count);
     }
 
     /**
@@ -101,7 +108,7 @@ public class Tracker {
         Item[] result = new Item[position];
         int count = 0;
         for (int index = 0; index < this.position; index++) {
-            if (this.items[index].getName().equals(key)) {
+            if (this.items[index] != null && this.items[index].getName().equals(key)) {
                 result[count++] = (this.items[index]);
             }
         }
