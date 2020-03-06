@@ -22,8 +22,10 @@ public class StartUI {
     }
 
     public static void editItem(Input input, Tracker tracker) {
+        System.out.println("===Edit an item.===");
         String id = input.askStr("Please enter the id.");
-        boolean edit = tracker.replace(id, tracker.findById(id));
+        String name = input.askStr("Please, enter name:");
+        boolean edit = tracker.replace(id, new Item(name));
         if (edit) {
             System.out.println("Thanks. Item edited.");
         } else {

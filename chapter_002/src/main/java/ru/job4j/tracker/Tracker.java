@@ -56,7 +56,14 @@ public class Tracker {
      * @return boolean result удалось ли провести операцию
      */
     public boolean replace(String id, Item item) {
-        boolean result = false;
+        int index = getIndexById(id);
+        boolean res = index != -1;
+        if (res) {
+            item.setId(id);
+            items[index] = item;
+        }
+        return res;
+        /*boolean result = false;
         for (int i = 0; i < this.position; i++) {
             if (this.items[i].getId().equals(id)) {
                 this.items[i] = item;
@@ -65,7 +72,7 @@ public class Tracker {
                 break;
             }
         }
-        return result;
+        return result;*/
     }
 
     /**
@@ -119,13 +126,16 @@ public class Tracker {
      * Метод находит Item с нужный id
      */
     public Item findById(String id) {
-        Item result = null;
+        /*Item result = null;
         for (int index = 0, j = 0; index < this.position; index++) {
             if (this.items[index].getId().equals(id)) {
                 result = this.items[index];
                 break;
             }
-        }
-        return result;
+        }*/
+        //Находим индекс
+        int index = getIndexById(id);
+        //Если индекс найден возвращаем item,иначе null.
+        return index != -1 ? items[index] : null;
     }
 }
