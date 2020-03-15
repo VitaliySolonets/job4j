@@ -12,5 +12,5 @@ public interface Input {
     /**
      * Возвращает число а не строку.
      */
-    int askInt(String question);
+    int askInt(String question,int lenght);
 }

@@ -17,7 +17,7 @@ public class StubInput implements Input {
     }
 
     @Override
-    public int askInt(String question) {
+    public int askInt(String question, int length) {
         return Integer.valueOf(askStr(question));
     }
 }
