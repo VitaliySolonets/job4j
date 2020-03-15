@@ -22,8 +22,6 @@ public class StartUI {
         for (int index = 0; index < actions.length; index++) {
             System.out.println(index + ". " + actions[index].name());
         }
-
-
     }
 
     public static void main(String[] args) {
@@ -31,7 +29,13 @@ public class StartUI {
         Tracker tracker = new Tracker();
         //создаем массив с действиями.
         UserAction[] actions = {
-                new CreateAction()
+                new CreateAction(),
+                new DeleteItem(),
+                new EditItem(),
+                new FindItemById(),
+                new FindItemsByName(),
+                new ShowAllItems(),
+                new EndOfTheProgram()
         };
         new StartUI().init(input, tracker, actions);
     }

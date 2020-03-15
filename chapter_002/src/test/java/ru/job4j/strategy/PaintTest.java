@@ -30,7 +30,6 @@ public class PaintTest {
                                 .add("+       +")
                                 .add("+       +")
                                 .add("+ + + + +")
-                               // .add(System.lineSeparator())
                                 .toString()
                 )
         );
