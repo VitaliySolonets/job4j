@@ -36,4 +36,29 @@ public class PaintTest {
         //возвращаем обратно ствндартный вывод в консоль.
         System.setOut(stdout);
     }
+
+    @Test
+    public void whenDrawTriangle() {
+        //Получаем ссылку на стандартный вывод в консоль.
+        PrintStream stdout = System.out;
+        //Создаем буфер для хранения вывода.
+        ByteArrayOutputStream out = new ByteArrayOutputStream();
+        //ЗЗаменяем стандартный вывод на вывод в память для тестирования.
+        System.setOut((new PrintStream(out)));
+        //Выполняем действия пишущие в консоль.
+        new Paint().draw(new Triangle());
+        //Проверяем результат вычисления.
+        assertThat(
+                new String(out.toByteArray()),
+                is(
+                        new StringJoiner(System.lineSeparator())
+                                .add("   +   ")
+                                .add("  + +  ")
+                                .add(" +   + ")
+                                .add("+     +")
+                                .add("+++++++")
+                                .toString()
+                )
+        );
+    }
 }
